@@ -25,7 +25,70 @@ public class MarshmallowMonster
 	
 	public String toString()
 	{
-		String desc = "I am a weird monster, others call me " + name + ". I have " + eye_count + " eyes and only " + tentacle_amount + " tentacles, but I have " + arm_count + " arms." + has_bloop + " tells you if I have a bloop";
+		String desc = "I am a weird monster, others call me " + name + ". I have " + eye_count + " eyes, " + tentacle_amount + " tentacles, and I have " + arm_count + " arms. " + has_bloop + " tells you if I have a bloop";
 		return desc;
 	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public int getEyeCount()
+	{
+		return eye_count;
+	}
+	
+	public int getArmCount()
+	{
+		return arm_count;
+	}
+	
+	public double getTentacleAmount()
+	{
+		return tentacle_amount;
+	}
+	
+	public boolean hasBloop()
+	{
+		return has_bloop;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;	
+	}
+	
+	public void setEyeCount(int eye_count)
+	{
+		this.eye_count = eye_count;
+	}
+	
+	public void setArmCount(int arm_count)
+	{
+		this.arm_count = arm_count;
+	}
+	
+	public void setTentacleAmount(double tentacle_amount)
+	{
+		this.tentacle_amount = tentacle_amount;
+	}
+	
+	public void setBloop(boolean has_bloop)
+	{
+		this.has_bloop = has_bloop;	
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
