@@ -22,4 +22,10 @@ public class MarshmallowMonster
 		this.tentacle_amount = tentacle_amount;
 		this.has_bloop = has_bloop;
 	}
+	
+	public String toString()
+	{
+		String desc = "I am a weird monster, others call me " + name + ". I have " + eye_count + " eyes and only " + tentacle_amount + " tentacles, but I have " + arm_count + " arms." + has_bloop + " tells you if I have a bloop";
+		return desc;
+	}
 }
