@@ -2,9 +2,17 @@ package monster.controller;
 
 import monster.model.MarshmallowMonster;
 import java.util.Scanner;
+import monster.view.MonsterDisplay;
 
 public class MonsterController
 {
+	private MonsterDisplay popup;
+	
+	public MonsterController()
+	{
+		popup = new MonsterDisplay();
+	}
+	
 	public void start()
 	{
 		MarshmallowMonster basic = new MarshmallowMonster();
@@ -65,6 +73,10 @@ public class MonsterController
 			currentMonster.setArmCount(currentMonster.getArmCount() - arm_eat);
 			System.out.println("Okay, now I have " + currentMonster.getArmCount() + " arm(s).");
 		}
+		
+		popup.displayText("Hi there! Ready to play?");
+		String answer = popup.getResponse("What is the air speed of a coconut laden swallow?");
+		System.out.println(answer);
 		
 		myScanner.close();
 	}
