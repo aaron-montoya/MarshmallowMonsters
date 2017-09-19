@@ -23,15 +23,47 @@ public class MonsterController
 		Scanner myScanner = new Scanner(System.in);
 		System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
 		int consumed = myScanner.nextInt();
-		currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-		System.out.println(currentMonster);
+		if(consumed == 0) {
+			System.out.println("Thank you for not eating my eyes :)" );
+		}
+		else if(consumed < 0) {
+			System.out.println("You can't eat negative eyes ya doof.");
+		}
+		else if(currentMonster.getEyeCount() - consumed < 0)
+		{
+			System.out.println("You can't eat more eyes than I have.");
+		}
+		else if(currentMonster.getEyeCount() - consumed == 1)
+		{
+			currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
+			System.out.println("Now I have 1 eye left.");
+		}
+		else
+		{
+			currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
+			System.out.println("Now I have " + currentMonster.getEyeCount() + " eyes left.");
+		}
 		
-		System.out.println(currentMonster.getName() + " wants to know how many tentacles you want to eat, please type in how many.");
-		double consumed_tentacles = myScanner.nextDouble();
-		currentMonster.setTentacleAmount(currentMonster.getTentacleAmount() - consumed_tentacles);
-		System.out.println(currentMonster);
 		
-		System.out.println("How many arms are you interested in eating? I have " + currentMonster.getArmCount());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		System.out.println(currentMonster.getName() + " wants to know how many arms are you interested in eating? I have " + currentMonster.getArmCount());
 		int arm_eat = myScanner.nextInt();
 		
 		if(arm_eat == 0)
