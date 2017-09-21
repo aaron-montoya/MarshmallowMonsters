@@ -33,8 +33,12 @@ public class MonsterController
 	private void interactWithMonster(MarshmallowMonster currentMonster)
 	{
 		Scanner myScanner = new Scanner(System.in);
-		System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
-		int consumed = myScanner.nextInt();
+//		System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
+		int consumed;
+		String response = popup.getResponse(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
+		
+		consumed = Integer.parseInt(response);
+//		int consumed = myScanner.nextInt();
 		if(consumed == 0) {
 			System.out.println("Thank you for not eating my eyes :)" );
 		}
@@ -55,8 +59,6 @@ public class MonsterController
 			currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
 			System.out.println("Now I have " + currentMonster.getEyeCount() + " eyes left.");
 		}
-		
-		
 		
 		System.out.println(currentMonster.getName() + " wants to know how many arms are you interested in eating? I have " + currentMonster.getArmCount());
 		int arm_eat = myScanner.nextInt();
@@ -84,7 +86,26 @@ public class MonsterController
 		
 		myScanner.close();
 	}
+	
+	private boolean isValidInteger(String sample)
+	{
+		boolean valid = false;
+		
+		try
+		{
+			Integer.parseInt(sample);
+			valid = true;
+		}
+		catch(NumberFormatException error)
+		{
+			popup.displayText("You need to input an int. " + sample + " is not valid");
+		}
+		
+		return valid;
+	}
 }
+
+
 
 
 
