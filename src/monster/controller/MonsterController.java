@@ -34,55 +34,74 @@ public class MonsterController
 	{
 		Scanner myScanner = new Scanner(System.in);
 //		System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
-		int consumed;
+		int consumed = 0;
 		String response = popup.getResponse(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
 		
-		consumed = Integer.parseInt(response);
+		if(isValidInteger(response))
+		{
+			consumed = Integer.parseInt(response);
+		}
+		
 //		int consumed = myScanner.nextInt();
 		if(consumed == 0) {
-			System.out.println("Thank you for not eating my eyes :)" );
+//			System.out.println("Thank you for not eating my eyes :)" );
+			popup.displayText("Thank you for not eating my eyes :)");
 		}
 		else if(consumed < 0) {
-			System.out.println("You can't eat negative eyes ya doof.");
+//			System.out.println("You can't eat negative eyes ya doof.");
+			popup.displayText("You can't eat negative eyes ya doof.");
 		}
 		else if(currentMonster.getEyeCount() - consumed < 0)
 		{
-			System.out.println("You can't eat more eyes than I have.");
+//			System.out.println("You can't eat more eyes than I have.");
+			popup.displayText("You can't eat more eyes than I have.");
 		}
 		else if(currentMonster.getEyeCount() - consumed == 1)
 		{
 			currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-			System.out.println("Now I have 1 eye left.");
+//			System.out.println("Now I have 1 eye left.");
+			popup.displayText("Now I have 1 eye left.");
 		}
 		else
 		{
 			currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-			System.out.println("Now I have " + currentMonster.getEyeCount() + " eyes left.");
+//			System.out.println("Now I have " + currentMonster.getEyeCount() + " eyes left.");
+			popup.displayText("Now I have " + currentMonster.getEyeCount() + " eyes left.");
 		}
 		
-		System.out.println(currentMonster.getName() + " wants to know how many arms are you interested in eating? I have " + currentMonster.getArmCount());
-		int arm_eat = myScanner.nextInt();
+//		System.out.println(currentMonster.getName() + " wants to know how many arms are you interested in eating? I have " + currentMonster.getArmCount());
+		double tentacle_eat = 0.0;
+		String tentacle_response = popup.getResponse(currentMonster.getName() + " wants to know how many tentacles are you interesting in eating? I have " + currentMonster.getTentacleAmount());
+		if(isValidDouble(tentacle_response))
+		{
+			tentacle_eat = Double.parseDouble(tentacle_response);
+		}
 		
-		if(arm_eat == 0)
+		if(tentacle_eat == 0)
 		{
-			System.out.println("Not hungry? So sad...");
+//			System.out.println("Not hungry? So sad...");
+			popup.displayText("Not hungry? So sad... :(");
 		}
-		else if(arm_eat < 0) {
-			System.out.println("Reality is hard for you...It is impossible to eat a negative amount.");
+		else if(tentacle_eat < 0) {
+//			System.out.println("Reality is hard for you...It is impossible to eat a negative amount.");
+			popup.displayText("Reality is hard for you...It is impossible to eat a negative armount.");
 		}
-		else if(currentMonster.getArmCount() - arm_eat < 0)
+		else if(currentMonster.getTentacleAmount() - tentacle_eat < 0)
 		{
-			System.out.println("Math is hard for you...You can't eat more arms then I have.");
+//			System.out.println("Math is hard for you...You can't eat more arms then I have.");
+			popup.displayText("Math is hard for you...You can't eat more tentacles than I have.");
 		}
 		else
 		{
-			currentMonster.setArmCount(currentMonster.getArmCount() - arm_eat);
-			System.out.println("Okay, now I have " + currentMonster.getArmCount() + " arm(s).");
+			currentMonster.setTentacleAmount(currentMonster.getTentacleAmount() - tentacle_eat);
+//			System.out.println("Okay, now I have " + currentMonster.getArmCount() + " arm(s).");
+			popup.displayText("Okay, now I have " + currentMonster.getTentacleAmount() + " tentacles(s).");
 		}
 		
 		popup.displayText("Hi there! Ready to play?");
 		String answer = popup.getResponse("What is the air speed of a coconut laden swallow?");
-		System.out.println(answer);
+//		System.out.println(answer);
+		popup.displayText(answer);
 		
 		myScanner.close();
 	}
@@ -98,7 +117,24 @@ public class MonsterController
 		}
 		catch(NumberFormatException error)
 		{
-			popup.displayText("You need to input an int. " + sample + " is not valid");
+			popup.displayText("You need to input an int. '" + sample + "' is not valid");
+		}
+		
+		return valid;
+	}
+	
+	private boolean isValidDouble(String sample_double)
+	{
+		boolean valid = false;
+		
+		try
+		{
+			Double.parseDouble(sample_double);
+			valid = true;
+		}
+		catch(NumberFormatException error)
+		{
+			popup.displayText("You need to input a double. '" + sample_double + "' is not valid");
 		}
 		
 		return valid;
