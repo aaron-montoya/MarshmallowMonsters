@@ -20,11 +20,16 @@ public class MonsterController
 	//Create the start method
 	public void start()
 	{
-		int count = 0;
-		while(count < 10)
+//		int count = 0;
+//		while(count < 10)
+//		{
+//			popup.displayText("Am I not the coolest?");
+//			count++;
+//		}
+		
+		for(int loop = 0; loop < 10; loop++)
 		{
-			popup.displayText("Am I not the coolest?");
-			count++;
+			popup.displayText("This is loop #" + (loop + 1) + " of ten");
 		}
 		
 		//Create MarshmallowMonster object instance called basic and initialize
