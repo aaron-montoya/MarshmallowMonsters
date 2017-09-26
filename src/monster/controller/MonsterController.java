@@ -4,37 +4,53 @@ import monster.model.MarshmallowMonster;
 import java.util.Scanner;
 import monster.view.MonsterDisplay;
 
+//Create the class
 public class MonsterController
 {
+	//Create a MonsterDisplay object instance called popup
 	private MonsterDisplay popup;
 	
+	//Create the constructor
 	public MonsterController()
 	{
+		//Initialize popup
 		popup = new MonsterDisplay();
 	}
 	
+	//Create the start method
 	public void start()
 	{
-		MarshmallowMonster basic = new MarshmallowMonster();
-//		System.out.println(basic);
+		int count = 0;
+		while(count < 10)
+		{
+			popup.displayText("Am I not the coolest?");
+			count++;
+		}
+		
+		//Create MarshmallowMonster object instance called basic and initialize
+		MarshmallowMonster basic = new MarshmallowMonster();		
+		//Display the toString description as gui
 		popup.displayText(basic.toString());
+		//Create MarshmallowMonster object instance called gilmo and initialize
 		MarshmallowMonster gilmo = new MarshmallowMonster("Gilmo", 7, 4, 2.2, true);
-//		System.out.println(gilmo);
 		popup.displayText(gilmo.toString());
-//		System.out.println("I am hungry, I'm going to eat one of Gilmo's arms");
 		popup.displayText("I am hungry, I'm going to eat one of Gilmo's arms");
 		gilmo.setArmCount(gilmo.getArmCount() - 1);
-//		System.out.println(gilmo);
 		popup.displayText(gilmo.toString());
-		
+	
+		//Call the interactWithMonster method and pass in the gilmo instance
 		interactWithMonster(gilmo);
 	}
 	
+	//Create the interactWithMonster method
 	private void interactWithMonster(MarshmallowMonster currentMonster)
 	{
-		Scanner myScanner = new Scanner(System.in);
+		
+//		Scanner myScanner = new Scanner(System.in);
 //		System.out.println(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
+		//Create and initialize the consumed variable
 		int consumed = 0;
+		//Create and initialize the response variable as gui
 		String response = popup.getResponse(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
 		
 		if(isValidInteger(response))
@@ -103,7 +119,7 @@ public class MonsterController
 //		System.out.println(answer);
 		popup.displayText(answer);
 		
-		myScanner.close();
+//		myScanner.close();
 	}
 	
 	private boolean isValidInteger(String sample)
