@@ -27,10 +27,10 @@ public class MonsterController
 //			count++;
 //		}
 		
-		for(int loop = 0; loop < 10; loop++)
-		{
-			popup.displayText("This is loop #" + (loop + 1) + " of ten");
-		}
+//		for(int loop = 0; loop < 10; loop++)
+//		{
+//			popup.displayText("This is loop #" + (loop + 1) + " of ten");
+//		}
 		
 		//Create MarshmallowMonster object instance called basic and initialize
 		MarshmallowMonster basic = new MarshmallowMonster();		
@@ -58,45 +58,43 @@ public class MonsterController
 		//Create and initialize the response variable as gui
 		String response = popup.getResponse(currentMonster.getName() + " wants to know how many eyes you want to eat, please type in how many.");
 		
-		if(isValidInteger(response))
+		while(!isValidInteger(response))
 		{
-			consumed = Integer.parseInt(response);
+			popup.displayText("grrr type a better answer next time.");
+			response = popup.getResponse("Type in an integer value!");
 		}
 		
-//		int consumed = myScanner.nextInt();
-		if(consumed == 0) {
-//			System.out.println("Thank you for not eating my eyes :)" );
+		consumed = Integer.parseInt(response);
+
+		if(consumed == 0)
+		{
 			popup.displayText("Thank you for not eating my eyes :)");
 		}
-		else if(consumed < 0) {
-//			System.out.println("You can't eat negative eyes ya doof.");
+		else if(consumed < 0)
+		{
 			popup.displayText("You can't eat negative eyes ya doof.");
 		}
 		else if(currentMonster.getEyeCount() - consumed < 0)
 		{
-//			System.out.println("You can't eat more eyes than I have.");
 			popup.displayText("You can't eat more eyes than I have.");
-		}
-		else if(currentMonster.getEyeCount() - consumed == 1)
-		{
-			currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-//			System.out.println("Now I have 1 eye left.");
-			popup.displayText("Now I have 1 eye left.");
 		}
 		else
 		{
 			currentMonster.setEyeCount(currentMonster.getEyeCount() - consumed);
-//			System.out.println("Now I have " + currentMonster.getEyeCount() + " eyes left.");
-			popup.displayText("Now I have " + currentMonster.getEyeCount() + " eyes left.");
+			popup.displayText("Now I have " + currentMonster.getEyeCount() + " eye(s) left.");
 		}
+				
 		
 //		System.out.println(currentMonster.getName() + " wants to know how many arms are you interested in eating? I have " + currentMonster.getArmCount());
 		double tentacle_eat = 0.0;
 		String tentacle_response = popup.getResponse(currentMonster.getName() + " wants to know how many tentacles are you interesting in eating? I have " + currentMonster.getTentacleAmount());
-		if(isValidDouble(tentacle_response))
+		
+		if(!isValidDouble(tentacle_response))
 		{
-			tentacle_eat = Double.parseDouble(tentacle_response);
+			popup.displayText("No, a double value.");
+			tentacle_response = popup.getResponse("Type in a double value!");
 		}
+		tentacle_eat = Double.parseDouble(tentacle_response);
 		
 		if(tentacle_eat == 0)
 		{
