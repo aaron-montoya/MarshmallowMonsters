@@ -3,6 +3,8 @@ package monster.controller;
 import monster.model.MarshmallowMonster;
 import java.util.Scanner;
 import monster.view.MonsterDisplay;
+import java.util.List;
+import java.util.ArrayList;
 
 //Create the class
 public class MonsterController
@@ -10,11 +12,15 @@ public class MonsterController
 	//Create a MonsterDisplay object instance called popup
 	private MonsterDisplay popup;
 	
+	private List<MarshmallowMonster> monsterList;
+	
+	
 	//Create the constructor
 	public MonsterController()
 	{
 		//Initialize popup
 		popup = new MonsterDisplay();
+		monsterList = new ArrayList <MarshmallowMonster>();
 	}
 	
 	//Create the start method
@@ -43,6 +49,9 @@ public class MonsterController
 		gilmo.setArmCount(gilmo.getArmCount() - 1);
 		popup.displayText(gilmo.toString());
 	
+		monsterList.add(basic);
+		monsterList.add(fred);
+		
 		//Call the interactWithMonster method and pass in the gilmo instance
 		interactWithMonster(gilmo);
 	}
