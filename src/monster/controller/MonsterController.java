@@ -50,11 +50,35 @@ public class MonsterController
 		popup.displayText(gilmo.toString());
 	
 		monsterList.add(basic);
-		monsterList.add(fred);
+		monsterList.add(gilmo);
+		useList();
 		
 		//Call the interactWithMonster method and pass in the gilmo instance
 		interactWithMonster(gilmo);
 	}
+	
+	private void useList()
+	{
+		for(int index = 0; index < monsterList.size(); index++)
+		{
+			MarshmallowMonster currentMonster = monsterList.get(index);
+			popup.displayText(currentMonster.getName());
+			String updateName = popup.getResponse("What should my new name be?");
+			currentMonster.setName(updateName);
+			popup.displayText("You named me " + currentMonster.getName());
+		}
+		
+		for(MarshmallowMonster current : monsterList)
+		{
+			popup.displayText("My name is " + current.getName());
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	//Create the interactWithMonster method
 	private void interactWithMonster(MarshmallowMonster currentMonster)
